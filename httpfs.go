@@ -4,7 +4,6 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"log"
 	"net/http"
 	"path/filepath"
 	"time"
@@ -64,7 +63,6 @@ func (f *HTTPFile) ModTime() time.Time {
 }
 
 func (f *HTTPFile) ReadAt(p []byte, off int64) (n int, err error) {
-	log.Println("READ", off, len(p))
 	req, err := http.NewRequest("GET", f.url, nil)
 	if err != nil {
 		return 0, err
